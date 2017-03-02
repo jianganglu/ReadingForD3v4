@@ -1,0 +1,16 @@
+﻿<html>
+<head>
+  <meta charset="utf-8">
+  <title>如何选择元素</title>
+</head>
+<body>
+<script src="https://d3js.org/d3.v4.min.js"></script>
+<script>
+  var body = d3.select('body'); //选择文档中的body元素
+  var p1 = body.select('p'); //选择body中的第一个p元素
+  var p = body.selectAll('p'); //选择body中的所有p元素
+  var svg = body.select('svg'); //选择body中的svg元素
+  var rects = body.selectAll('rect'); //选择body中的所有rect元素
+</script>
+</body>
+</html>
