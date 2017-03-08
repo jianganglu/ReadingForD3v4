@@ -159,9 +159,20 @@
       return xScale(i) + rectPadding / 2;
     })
     .attr('y', function(d) {
-      return yScale(d);
+      var min = yScale.domain()[0];
+      return yScale(min);
     })
     .attr('width', xScale.bandwidth() - rectPadding)
+    .attr('height', 0)
+    .transition()
+    .delay(function(d, i) {
+      return i * 200;
+    })
+    .duration(2000)
+    .ease(d3.easeBounce)
+    .attr('y', function(d) {
+      return yScale(d)
+    })
     .attr('height', function(d) {
       return height - padding.top - padding.bottom - yScale(d);
     });
@@ -175,15 +186,25 @@
     .attr('x', function(d, i) {
       return xScale(i) + rectPadding / 2;
     })
-    .attr('y', function(d) {
-      return yScale(d);
-    })
     .attr('dx', (xScale.bandwidth() - rectPadding) / 2)
     .attr('dy', function(d) {
       return 20; 
     })
     .text(function(d) {
       return d;
+    })
+    .attr('y', function(d, i) {
+      var min = yScale.domain()[0];
+      return yScale(min);
+    })
+    .transition()
+    .delay(function(d, i) {
+      return i * 200;
+    })
+    .duration(2000)
+    .ease(d3.easeBounce)
+    .attr('y', function(d) {
+      return yScale(d);
     });
 
   svg.append('g')
